@@ -19,9 +19,12 @@ public class CharacterHit : MonoBehaviour
     public Vector2 hitAreaSize;
     public LayerMask hitableLayers;
 
+
+    private bool hitting;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButtonDown(0))
         {
             Hit();
         }
@@ -29,6 +32,7 @@ public class CharacterHit : MonoBehaviour
 
     private void Hit()
     {
+        hitting = true;
         //Aþaðý fýrlama 
         col.sharedMaterial = bouncy;
 
@@ -36,22 +40,27 @@ public class CharacterHit : MonoBehaviour
 
 
         //overlap
-        Collider2D bell = Physics2D.OverlapBox(transform.position + point, hitAreaSize, 0, hitableLayers);
+        //Collider2D bell = Physics2D.OverlapBox(transform.position + point, hitAreaSize, 0, hitableLayers);
 
 
 
         //Animasyon
         animator.SetTrigger("Hit");
-
-
-
-        //Ses
-        if (bell)
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hitting)
         {
-            bell.GetComponent<Bell>().Ring();
+            hitting = false;
+            {
+                if(((1 << collision.gameObject.layer) & hitableLayers) != 0)//layer kontrolü
+                {
+                    //Ses
+                    collision.gameObject.GetComponent<Bell>().Ring();
+                }
+            }
         }
     }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         col.sharedMaterial = bounceless;
