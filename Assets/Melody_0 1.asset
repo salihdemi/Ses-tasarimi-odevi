@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fd9cc4bdf21adf479d60dedf091061e, type: 3}
-  m_Name: Melody
+  m_Name: Melody_0 1
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 8300000, guid: dffb1be59edbdbb469673cbb41b58363, type: 3}
-  - {fileID: 8300000, guid: 21285d0d87fdfe04aa1f15f4bc77055b, type: 3}
   - {fileID: 8300000, guid: 78d82cfbc7072594aa3d1c62d18a25dc, type: 3}
+  - {fileID: 8300000, guid: 21285d0d87fdfe04aa1f15f4bc77055b, type: 3}
   codes:
-  - 1
-  - 2
-  - 3
+  - Ring
+  - Tick
+  - Bang

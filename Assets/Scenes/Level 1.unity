@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0880f8858f88549861586b4d777361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  melodyCode: 5
+  melodyCode: Guitar
   audioSource: {fileID: 102973028}
 --- !u!212 &102973030
 SpriteRenderer:
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0880f8858f88549861586b4d777361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  melodyCode: 6
+  melodyCode: Guitar 2
   audioSource: {fileID: 1186787766}
 --- !u!212 &1186787768
 SpriteRenderer:
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0880f8858f88549861586b4d777361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  melodyCode: 4
+  melodyCode: Elec
   audioSource: {fileID: 1400486900}
 --- !u!212 &1400486902
 SpriteRenderer:
@@ -1145,8 +1145,6 @@ MonoBehaviour:
   col: {fileID: 1980659742}
   bounceless: {fileID: 6200000, guid: 84cf6570fe5ecb349a2a2a455a677a9f, type: 2}
   bouncy: {fileID: 6200000, guid: 7af54343e5a4f3b459de187c97aea779, type: 2}
-  point: {x: 0, y: -1.5, z: 0}
-  hitAreaSize: {x: 1, y: 2}
   hitableLayers:
     serializedVersion: 2
     m_Bits: 8

@@ -17,7 +17,6 @@ public class LevelManager : MonoBehaviour
     public static int level;
 
 
-    public static int finalLevel = 1;
 
     private void Awake()
     {
@@ -32,7 +31,7 @@ public class LevelManager : MonoBehaviour
     }
     public void LevelStart()
     {
-        MelodyManager.instance.ChangeMelody(MelodyManager.instance.levelMelodies[level]);
+        MelodyManager.instance.ChangeMelodyList(level);
         MelodyManager.instance.StartMelody();
     }
     public void LevelEndCinemathic()
@@ -42,16 +41,16 @@ public class LevelManager : MonoBehaviour
     }
     public void LevelEnd()
     {
+        if (level == SceneManager.sceneCount)
+        {
+            Debug.Log("Oyun Bitti");
+            return;
+        }
         NextLevel();
         LevelStartCinemathic();
     }
     public static void NextLevel()
     {
-        if (level == finalLevel)
-        {
-            Debug.Log("Oyun Bitti");
-            return;
-        }
         level++;
         SceneManager.LoadScene(level);
     }

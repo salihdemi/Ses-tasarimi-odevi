@@ -9,6 +9,6 @@ public class Bell : MonoBehaviour
     public void Ring()
     {
         audioSource.Play();
-        MelodyManager.AddMelody(melodyCode);
+        MelodyManager.instance.CheckMelody(melodyCode);
     }
 }

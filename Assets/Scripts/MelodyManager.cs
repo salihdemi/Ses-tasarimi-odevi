@@ -25,7 +25,11 @@ public class MelodyManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     private AudioClip[] audioClips;
 
-    public List<Melody> levelMelodies = new List<Melody>();
+
+    public List<MelodyList> levelMelodyLists = new List<MelodyList>();
+    public static MelodyList currentMelodyList;
+    public static int melodyNumber;
+
 
     private Coroutine playingMelodyCoroutine;
 
@@ -43,15 +47,24 @@ public class MelodyManager : MonoBehaviour
         StopCoroutine(playingMelodyCoroutine);
     }
 
-    public void ChangeMelody(Melody sounds)
+    public void ChangeMelodyList(int level)
     {
-        audioClips = sounds.clips;
-        neededMelody = sounds.codes;
+        currentMelodyList = levelMelodyLists[level];
+        melodyNumber = 0;
+        ChangeMelody(currentMelodyList.melodies[melodyNumber]);
+
+    }
+    public void ChangeMelody(Melody melody)
+    {
+        melodyNumber++;
+        audioClips = melody.clips;
+        neededMelody = melody.codes;
+        Debug.Log(melody);
     }
 
 
 
-    public static void AddMelody(string melodyCode)
+    public void CheckMelody(string melodyCode)
     {
         currentMelody.Add(melodyCode);
 
@@ -61,7 +74,21 @@ public class MelodyManager : MonoBehaviour
         {
             if (currentMelody.SequenceEqual(neededMelody))
             {
-                LevelManager.instance.LevelEndCinemathic();
+                string[] lastMelody = currentMelodyList.melodies[currentMelodyList.melodies.Length - 1].codes;
+
+                if (currentMelody.SequenceEqual(lastMelody))
+                {
+                    Debug.Log("Bölüm geç");
+                    //sonraki bölüme geç
+                    LevelManager.instance.LevelEndCinemathic();
+                }
+                else
+                {
+                    Debug.Log("Melodi geç");
+                    // sonraki melodiye geç
+                    ChangeMelody(currentMelodyList.melodies[melodyNumber]);
+                }
+
             }
 
 
@@ -82,8 +109,9 @@ public class MelodyManager : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
                 // Audio bitene kadar bekle
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(0.5f);
             }
+            yield return new WaitForSeconds(1);
         }
     }
 }

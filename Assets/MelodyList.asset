@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8dde82365dcfc4a9f418de785bc7d0, type: 3}
+  m_Name: MelodyList
+  m_EditorClassIdentifier: 
+  melodies:
+  - {fileID: 11400000, guid: c22c2a7b68f9f8541b0c0fae73a3ae3f, type: 2}
+  - {fileID: 11400000, guid: 4220d7dc29e8a184db3233570c0bd44a, type: 2}
+  - {fileID: 11400000, guid: 82a9a32e66626224ca51af909083730f, type: 2}

@@ -14,9 +14,7 @@ public class CharacterHit : MonoBehaviour
     public PhysicsMaterial2D bounceless;
     public PhysicsMaterial2D bouncy;
 
-    [Header("Hit Area")]
-    public Vector3 point;
-    public Vector2 hitAreaSize;
+    [Header("Hit")]
     public LayerMask hitableLayers;
 
 
@@ -64,15 +62,6 @@ public class CharacterHit : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         col.sharedMaterial = bounceless;
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-
-        Vector2 center = transform.position + point;
-
-        Gizmos.DrawWireCube(center, hitAreaSize);
     }
 
 }
