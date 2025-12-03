@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
 
     public void LevelStartCinemathic()
     {
+        //Sunum coroutine!
         LevelStart();
     }
     public void LevelStart()
@@ -37,6 +38,7 @@ public class LevelManager : MonoBehaviour
     public void LevelEndCinemathic()
     {
         MelodyManager.instance.StopMelody();
+        //Sunum coroutine!
         LevelEnd();
     }
     public void LevelEnd()

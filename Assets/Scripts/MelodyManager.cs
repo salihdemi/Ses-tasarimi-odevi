@@ -76,17 +76,16 @@ public class MelodyManager : MonoBehaviour
             {
                 string[] lastMelody = currentMelodyList.melodies[currentMelodyList.melodies.Length - 1].codes;
 
-                if (currentMelody.SequenceEqual(lastMelody))
+                if (currentMelody.SequenceEqual(lastMelody))//Son melodiyse
                 {
-                    Debug.Log("Bölüm geç");
-                    //sonraki bölüme geç
-                    LevelManager.instance.LevelEndCinemathic();
+                    LevelManager.instance.LevelEndCinemathic();//Bölüm bitimi ve diðer bölüme geçme
                 }
                 else
                 {
-                    Debug.Log("Melodi geç");
-                    // sonraki melodiye geç
-                    ChangeMelody(currentMelodyList.melodies[melodyNumber]);
+                    // Þaþýrma animasyonu
+                    // bekleme
+                    // karakteri izleyerek çalma animasyonu
+                    ChangeMelody(currentMelodyList.melodies[melodyNumber]);//Sonraki melodiye geç
                 }
 
             }
