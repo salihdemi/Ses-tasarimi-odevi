@@ -65,19 +65,19 @@ public class CustomCharacterController : MonoBehaviour
 
         if (true)
         {
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         }
     }
     private void CheckJump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
             //JumpAnimation
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f)
+        else if (Input.GetKeyUp(KeyCode.Space) && rb.linearVelocity.y > 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
             //FallingAnimation
         }
     }
