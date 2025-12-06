@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class MelodyManager : MonoBehaviour
 {
@@ -33,9 +36,17 @@ public class MelodyManager : MonoBehaviour
 
     private Coroutine playingMelodyCoroutine;
 
+
+
+    public static int level=0;
+
+
+    public UnityEvent levelEndEvent;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        ChangeMelodyList(level);
+        instance.StartMelody();
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void StartMelody()
@@ -69,7 +80,8 @@ public class MelodyManager : MonoBehaviour
         currentMelody.Add(melodyCode);
 
 
-
+        Debug.Log(currentMelody);
+        Debug.Log(neededMelody);
         if (currentMelody.Count == neededMelody.Length)
         {
             if (currentMelody.SequenceEqual(neededMelody))
@@ -78,7 +90,9 @@ public class MelodyManager : MonoBehaviour
 
                 if (currentMelody.SequenceEqual(lastMelody))//Son melodiyse
                 {
-                    LevelManager.instance.LevelEndCinemathic();//Bölüm bitimi ve diðer bölüme geçme
+                    StopMelody();
+                    levelEndEvent.Invoke();
+                    //LevelManager.instance.LevelEndCinemathic();//Bölüm bitimi ve diðer bölüme geçme
                 }
                 else
                 {

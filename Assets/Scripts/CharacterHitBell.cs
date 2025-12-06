@@ -51,10 +51,11 @@ public class CharacterHitBell : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.TryGetComponent<Bell>(out Bell bell))
+        if(collision.gameObject.TryGetComponent<Bell>(out Bell bell) && hitting)
         {
             bell.Ring();
         }
+        hitting = false;
         /*
         if (hitting)
         {
@@ -71,6 +72,7 @@ public class CharacterHitBell : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {/*
         col.sharedMaterial = bounceless;*/
+        hitting = true;
     }
 
 }

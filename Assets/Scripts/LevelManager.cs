@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    /*
     public static LevelManager instance;
     LevelManager()
     {
@@ -72,5 +73,5 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         gameObject.SetActive(false);
     }
-
+    */
 }

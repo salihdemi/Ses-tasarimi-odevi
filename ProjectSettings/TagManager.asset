@@ -52,5 +52,8 @@ TagManager:
   - name: Front
     uniqueID: 3405993979
     locked: 0
+  - name: Effect
+    uniqueID: 830207793
+    locked: 0
   m_RenderingLayers:
   - Default
