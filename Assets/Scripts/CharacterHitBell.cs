@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterHit : MonoBehaviour
+public class CharacterHitBell : MonoBehaviour
 {
     [Header("Classes")]
     public Animator animator;
@@ -22,14 +22,18 @@ public class CharacterHit : MonoBehaviour
 
     void Update()
     {
+            //Debug.Log(Input.GetMouseButtonDown(0));
+            /*
         if (Input.GetMouseButtonDown(0))
         {
+            //Debug.Log("mouse");
             Hit();
-        }
+        }*/
     }
 
     private void Hit()
     {
+           // Debug.Log("hit");
         hitting = true;
         //Aþaðý fýrlama 
         col.sharedMaterial = bouncy;
@@ -47,6 +51,11 @@ public class CharacterHit : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.TryGetComponent<Bell>(out Bell bell))
+        {
+            bell.Ring();
+        }
+        /*
         if (hitting)
         {
             hitting = false;
@@ -57,11 +66,11 @@ public class CharacterHit : MonoBehaviour
                     collision.gameObject.GetComponent<Bell>().Ring();
                 }
             }
-        }
+        }*/
     }
     private void OnCollisionExit2D(Collision2D collision)
-    {
-        col.sharedMaterial = bounceless;
+    {/*
+        col.sharedMaterial = bounceless;*/
     }
 
 }
