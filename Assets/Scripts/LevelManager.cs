@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
@@ -16,11 +17,10 @@ public class LevelManager : MonoBehaviour
 
     public static int level;
 
-
+    public UnityEvent OnMelodyEnded;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
 
         LevelStartCinemathic();
     }
@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
     public void LevelStart()
     {
         MelodyManager.instance.ChangeMelodyList(level);
+        level++;
         MelodyManager.instance.StartMelody();
     }
     public void LevelEndCinemathic()
@@ -43,18 +44,13 @@ public class LevelManager : MonoBehaviour
     }
     public void LevelEnd()
     {
-        if (level == SceneManager.sceneCount)
+        OnMelodyEnded.Invoke();
+        if (level == SceneManager.sceneCount+1)
         {
             Debug.Log("Oyun Bitti");
             return;
         }
-        NextLevel();
-        LevelStartCinemathic();
-    }
-    public static void NextLevel()
-    {
-        level++;
-        SceneManager.LoadScene(level);
+        //LevelStartCinemathic();
     }
 
 

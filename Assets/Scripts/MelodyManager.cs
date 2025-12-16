@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MelodyManager : MonoBehaviour
 {
@@ -35,7 +36,8 @@ public class MelodyManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
+        StartMelody();
     }
 
     public void StartMelody()
