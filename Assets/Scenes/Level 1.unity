@@ -196,7 +196,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 21285d0d87fdfe04aa1f15f4bc77055b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7fc5a48c6eb92f14aa28eb00bca28c63, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -27718,9 +27718,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ecf399b8daf5e408522825c36f559f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMelodyStrings: []
+  neededMelody: []
   audioSource: {fileID: 662219079}
-  levelMelodyLists:
-  - {fileID: 11400000, guid: 21cfdef85c1068041bfaefa9b9ab9ae5, type: 2}
+  currentMelodyList: {fileID: 11400000, guid: 21cfdef85c1068041bfaefa9b9ab9ae5, type: 2}
+  melodyNumber: 0
 --- !u!4 &662219081
 Transform:
   m_ObjectHideFlags: 0
@@ -27765,10 +27767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc91a2514d5e37c448fd944dde99f11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  melodyManager: {fileID: 662219080}
   OnMelodyEnded:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2127734967}
         m_TargetAssemblyTypeName: Instrumentalist, Assembly-CSharp
         m_MethodName: Leave
         m_Mode: 1
@@ -27872,7 +27875,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 78d82cfbc7072594aa3d1c62d18a25dc, type: 3}
+  m_Resource: {fileID: 8300000, guid: 59475bde46533ed4d9ebc385d1ae9803, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -28217,7 +28220,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: dffb1be59edbdbb469673cbb41b58363, type: 3}
+  m_Resource: {fileID: 8300000, guid: 71b34c932d697814fa567b758cc4b0b3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

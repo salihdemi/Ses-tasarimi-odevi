@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,55 +8,41 @@ using UnityEngine.Audio;
 public class MelodyManager : MonoBehaviour
 {
     
-    public static MelodyManager instance;
-    MelodyManager()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
+
+
     
 
-    public static List<string> currentMelody = new List<string>();
+    public List<string> currentMelodyStrings = new List<string>();
 
-    public static string[] neededMelody;
+    public string[] neededMelody;
 
-
+    private MelodyList melodyList;
 
     [SerializeField] private AudioSource audioSource;
     private AudioClip[] audioClips;
 
 
-    public List<MelodyList> levelMelodyLists = new List<MelodyList>();
-    public static MelodyList currentMelodyList;
-    public static int melodyNumber;
+    public MelodyList currentMelodyList;
+    public int melodyNumber;
 
 
     private Coroutine playingMelodyCoroutine;
 
-    private void Awake()
-    {
-        //DontDestroyOnLoad(gameObject);
-        StartMelody();
-    }
 
     public void StartMelody()
     {
-        playingMelodyCoroutine = StartCoroutine(PlayAudioSequence());
+        Debug.Log(currentMelodyList.melodies);
+        ChangeMelody(currentMelodyList.melodies[melodyNumber]);
+        if (playingMelodyCoroutine == null)
+        {
+            playingMelodyCoroutine = StartCoroutine(PlayAudioSequence());
+        }
     }
     public void StopMelody()
     {
         StopCoroutine(playingMelodyCoroutine);
     }
 
-    public void ChangeMelodyList(int level)
-    {
-        currentMelodyList = levelMelodyLists[level];
-        melodyNumber = 0;
-        ChangeMelody(currentMelodyList.melodies[melodyNumber]);
-
-    }
     public void ChangeMelody(Melody melody)
     {
         melodyNumber++;
@@ -68,17 +55,17 @@ public class MelodyManager : MonoBehaviour
 
     public void CheckMelody(string melodyCode)
     {
-        currentMelody.Add(melodyCode);
+        currentMelodyStrings.Add(melodyCode);
 
 
 
-        if (currentMelody.Count == neededMelody.Length)
+        if (currentMelodyStrings.Count == neededMelody.Length)
         {
-            if (currentMelody.SequenceEqual(neededMelody))
+            if (currentMelodyStrings.SequenceEqual(neededMelody))
             {
                 string[] lastMelody = currentMelodyList.melodies[currentMelodyList.melodies.Length - 1].codes;
 
-                if (currentMelody.SequenceEqual(lastMelody))//Son melodiyse
+                if (currentMelodyStrings.SequenceEqual(lastMelody))//Son melodiyse
                 {
                     LevelManager.instance.LevelEndCinemathic();//Bölüm bitimi ve diðer bölüme geçme
                 }
@@ -94,13 +81,13 @@ public class MelodyManager : MonoBehaviour
 
 
 
-            currentMelody.RemoveAt(0);
+            currentMelodyStrings.RemoveAt(0);
         }
     }
 
 
 
-    IEnumerator PlayAudioSequence()
+    private IEnumerator PlayAudioSequence()
     {
         while (true)
         {

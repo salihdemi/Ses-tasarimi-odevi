@@ -11,7 +11,7 @@ public class Instrumentalist : MonoBehaviour
     public void Leave()
     {
         Debug.Log("leave");
-        MelodyManager.instance.StopMelody();
+        LevelManager.instance.melodyManager.StopMelody();
         col.isTrigger = true;
     }
 }

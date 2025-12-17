@@ -19039,6 +19039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc91a2514d5e37c448fd944dde99f11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  melodyManager: {fileID: 1984586528}
   OnMelodyEnded:
     m_PersistentCalls:
       m_Calls:
@@ -20136,10 +20137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ecf399b8daf5e408522825c36f559f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMelodyStrings: []
+  neededMelody: []
   audioSource: {fileID: 1984586530}
-  levelMelodyLists:
-  - {fileID: 11400000, guid: 9748c2a211a6f9a4a89d9041346ee484, type: 2}
-  - {fileID: 11400000, guid: 21cfdef85c1068041bfaefa9b9ab9ae5, type: 2}
+  currentMelodyList: {fileID: 11400000, guid: 9748c2a211a6f9a4a89d9041346ee484, type: 2}
+  melodyNumber: 0
 --- !u!4 &1984586529
 Transform:
   m_ObjectHideFlags: 0
@@ -20453,8 +20455,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1522448218}
-  - {fileID: 1984586529}
   - {fileID: 1171467292}
+  - {fileID: 1984586529}
   - {fileID: 493886527}
   - {fileID: 2062556515}
   - {fileID: 1378378069}

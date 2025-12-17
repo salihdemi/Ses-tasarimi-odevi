@@ -7,21 +7,18 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-    LevelManager()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
-
-    public static int level;
+    public MelodyManager melodyManager;
 
     public UnityEvent OnMelodyEnded;
 
     private void Awake()
     {
 
+        if (instance == null)
+        {
+            instance = this;
+        }
+        Debug.Log(instance);
         LevelStartCinemathic();
     }
 
@@ -32,20 +29,19 @@ public class LevelManager : MonoBehaviour
     }
     public void LevelStart()
     {
-        MelodyManager.instance.ChangeMelodyList(level);
-        level++;
-        MelodyManager.instance.StartMelody();
+        melodyManager.StartMelody();
     }
     public void LevelEndCinemathic()
     {
-        MelodyManager.instance.StopMelody();
+        LevelManager.instance.melodyManager.StopMelody();
         //Sunum coroutine!
         LevelEnd();
     }
     public void LevelEnd()
     {
         OnMelodyEnded.Invoke();
-        if (level == SceneManager.sceneCount+1)
+        Debug.Log(SceneManager.loadedSceneCount + " " + SceneManager.sceneCountInBuildSettings);
+        if (SceneManager.loadedSceneCount == SceneManager.sceneCountInBuildSettings)
         {
             Debug.Log("Oyun Bitti");
             return;
