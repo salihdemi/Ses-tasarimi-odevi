@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: "Tile-Toprak SPR\u0130TESHEET_3"
+  m_Name: Tile-Toprak-png_0
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 1235445448, guid: 62c41dcdfbca20c43bfb806a084d5d8b, type: 3}
+  m_Sprite: {fileID: -5953913495813265081, guid: 45ad8099ddba76d4fac844874696a5e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

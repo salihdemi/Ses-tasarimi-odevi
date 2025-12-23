@@ -18,6 +18,7 @@ public class CustomCharacterController : MonoBehaviour
     #region Classlar
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    public Animator animator;
     #endregion
 
 
@@ -67,6 +68,14 @@ public class CustomCharacterController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         }
+        if (horizontal != 0)
+        {
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
+        }
     }
     private void CheckJump()
     {
@@ -74,11 +83,13 @@ public class CustomCharacterController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
             //JumpAnimation
+            animator.SetTrigger("Jump");
         }
         else if (Input.GetKeyUp(KeyCode.Space) && rb.linearVelocity.y > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
             //FallingAnimation
+            animator.SetTrigger("Fall");
         }
     }
     private void Turn()
@@ -104,10 +115,12 @@ public class CustomCharacterController : MonoBehaviour
     }
     private void CollideGround()
     {
+        animator.SetBool("Ground", true);
         isGrounded = true;
     }
     private void UnCollideGround()
     {
+        animator.SetBool("Ground", false);
         isGrounded = false;
     }
     public void ChangeGravityActive(bool isActive)
