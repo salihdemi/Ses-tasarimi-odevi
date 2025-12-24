@@ -48,7 +48,7 @@ public class MelodyManager : MonoBehaviour
         melodyNumber++;
         audioClips = melody.clips;
         neededMelody = melody.codes;
-        Debug.Log(melody);
+        //Debug.Log(melody);
     }
 
 
@@ -74,6 +74,7 @@ public class MelodyManager : MonoBehaviour
                     // Þaþýrma animasyonu
                     // bekleme
                     // karakteri izleyerek çalma animasyonu
+                    Debug.Log("changemelody");
                     ChangeMelody(currentMelodyList.melodies[melodyNumber]);//Sonraki melodiye geç
                 }
 
@@ -97,9 +98,9 @@ public class MelodyManager : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
                 // Audio bitene kadar bekle
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(clip.length);
             }
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0);
         }
     }
 }

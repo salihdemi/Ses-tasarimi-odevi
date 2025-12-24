@@ -50,12 +50,10 @@ public class CharacterHit : MonoBehaviour
         if (hitting)
         {
             hitting = false;
+            if (((1 << collision.gameObject.layer) & hitableLayers) != 0)//layer kontrolü
             {
-                if(((1 << collision.gameObject.layer) & hitableLayers) != 0)//layer kontrolü
-                {
-                    //Ses
-                    collision.gameObject.GetComponent<Bell>().Ring();
-                }
+                //Ses
+                collision.gameObject.GetComponent<Bell>().Ring();
             }
         }
     }

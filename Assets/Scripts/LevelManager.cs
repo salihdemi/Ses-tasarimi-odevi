@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
     public void LevelEnd()
     {
         OnMelodyEnded.Invoke();
-        Debug.Log(SceneManager.loadedSceneCount + " " + SceneManager.sceneCountInBuildSettings);
+        //Debug.Log(SceneManager.loadedSceneCount + " " + SceneManager.sceneCountInBuildSettings);
         if (SceneManager.loadedSceneCount == SceneManager.sceneCountInBuildSettings)
         {
             Debug.Log("Oyun Bitti");
