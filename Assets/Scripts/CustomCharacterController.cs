@@ -85,11 +85,16 @@ public class CustomCharacterController : MonoBehaviour
             //JumpAnimation
             animator.SetTrigger("Jump");
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && rb.linearVelocity.y > 0f)
+        else if (rb.linearVelocity.y > 0f)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
             //FallingAnimation
             animator.SetTrigger("Fall");
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+            }
+
+
         }
     }
     private void Turn()
