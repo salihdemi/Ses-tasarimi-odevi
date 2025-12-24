@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MelodyList
   melodies:
   - {fileID: 11400000, guid: fb55088e6998ebc4d91a357f44596c2f, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 137923480a9ac5740bad89bb37cb2847, type: 2}

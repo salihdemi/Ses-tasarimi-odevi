@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GitMelody 1
   m_EditorClassIdentifier: Assembly-CSharp::Melody
   clips:
-  - {fileID: 8300000, guid: 9461d9b5e2cad8b46858ae57bf8b726f, type: 3}
+  - {fileID: 8300000, guid: 2dc35ae870bd78e42acc42de37ecf3c0, type: 3}
   codes:
   - Tick
   - Ring
