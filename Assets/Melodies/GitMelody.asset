@@ -15,6 +15,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 9461d9b5e2cad8b46858ae57bf8b726f, type: 3}
   codes:
-  - Tick
-  - Ring
-  - Bang
+  - La
+  - Mi
+  - SolD
+  - Si
