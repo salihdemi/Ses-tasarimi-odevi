@@ -15,7 +15,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: f49d2d5c52855174fb251cf3404984f2, type: 3}
   codes:
+  - FaD
   - Fa
-  - Mi
   - SolD
   - Re
