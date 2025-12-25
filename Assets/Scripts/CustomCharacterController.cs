@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Unity.VisualScripting;
-
 
 public enum State { Normal, Sliding }
+
 public class CustomCharacterController : MonoBehaviour
 {
     [Header("Movement")]
@@ -11,9 +9,9 @@ public class CustomCharacterController : MonoBehaviour
     public float jumpingPower = 10;
     public float gravityScale = 3;
 
-    //private
     private float horizontal;
     private bool isGrounded;
+    private bool isFalling;
 
     #region Classlar
     private Rigidbody2D rb;
@@ -21,120 +19,107 @@ public class CustomCharacterController : MonoBehaviour
     public Animator animator;
     #endregion
 
-
-
-    #region Sistem Fonksiyonlarý
     private void Awake()
     {
         InitializeComponents();
-        ChangeGravityActive(true);
+        rb.gravityScale = gravityScale;
     }
+
     void Update()
     {
-        CheckJump();
-        Turn();
-        Move();
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        switch (collision.gameObject.tag)
-        {
-            case "Ground":
-                CollideGround();
-                break;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        switch (collision.gameObject.tag)
-        {
-            case "Ground":
-                UnCollideGround();
-                break;
-
-            case "Wall":
-                //Sekme hakkini azalt
-                break;
-        }
-    }
-    #endregion
-
-    #region Temel Kontrol fonksiyonlarý
-    private void Move()
-    {
+        // Önce hareket girdisini alalım ama animasyonu hemen oynatmayalım
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (true)
-        {
-            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
-        }
-        if (horizontal != 0)
-        {
-            animator.SetBool("Moving", true);
-        }
-        else
-        {
-            animator.SetBool("Moving", false);
-        }
+        CheckJump();
+        Turn();
+        MoveLogic();
+        UpdateAnimations(); // Animasyonları tek bir yerden yönetmek en sağlıklısıdır
     }
+
+    private void MoveLogic()
+    {
+        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+    }
+
     private void CheckJump()
     {
+        // Zıplama Başlatma
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
-            //JumpAnimation
+
+            // Zıplama anında diğer her şeyi susturalım
+            animator.SetBool("Ground", false);
             animator.SetTrigger("Jump");
+
+            isGrounded = false; // Çakışmayı önlemek için hemen false yapıyoruz
+            isFalling = false;
         }
-        else if (rb.linearVelocity.y > 0f)
+
+        // Havada olma durumu
+        if (!isGrounded)
         {
-            //FallingAnimation
-            animator.SetTrigger("Fall");
-            if (Input.GetKeyUp(KeyCode.Space))
+            // Düşüş kontrolü
+            if (rb.linearVelocity.y < -0.1f && !isFalling)
+            {
+                animator.SetTrigger("Fall");
+                isFalling = true;
+            }
+
+            // Yarım zıplama kontrolü
+            if (Input.GetKeyUp(KeyCode.Space) && rb.linearVelocity.y > 0f)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
             }
-
-
         }
     }
+
+    private void UpdateAnimations()
+    {
+        // Sadece yerdeyken Moving animasyonuna izin ver
+        if (isGrounded)
+        {
+            animator.SetBool("Moving", horizontal != 0);
+        }
+        else
+        {
+            // Havadayken Moving bool'u kapalı olmalı ki Jump/Fall animasyonu kesilmesin
+            animator.SetBool("Moving", false);
+        }
+    }
+
     private void Turn()
     {
-        bool x = spriteRenderer.flipX;
-        if ((!x && horizontal < 0f || x && horizontal > 0f))
+        if (horizontal > 0) spriteRenderer.flipX = false;
+        else if (horizontal < 0) spriteRenderer.flipX = true;
+    }
+
+    #region Çarpışma Kontrolleri
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            x = !x;
+            isGrounded = true;
+            isFalling = false;
+            animator.SetBool("Ground", true);
+            animator.ResetTrigger("Jump"); // Kalan triggerları temizle
+            animator.ResetTrigger("Fall");
         }
-        spriteRenderer.flipX = x;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+            animator.SetBool("Ground", false);
+        }
     }
     #endregion
 
-    #region Diðer fonksiyonlar
     private void InitializeComponents()
     {
-        if (rb == null)
-            rb = GetComponent<Rigidbody2D>();
-
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
-
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    private void CollideGround()
-    {
-        animator.SetBool("Ground", true);
-        isGrounded = true;
-    }
-    private void UnCollideGround()
-    {
-        animator.SetBool("Ground", false);
-        isGrounded = false;
-    }
-    public void ChangeGravityActive(bool isActive)
-    {
-        if (isActive)
-            rb.gravityScale = gravityScale;
-        else
-            rb.gravityScale = 0f;
-    }
-    #endregion
-
 }
