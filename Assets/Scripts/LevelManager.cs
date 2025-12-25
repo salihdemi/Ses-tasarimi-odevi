@@ -18,7 +18,6 @@ public class LevelManager : MonoBehaviour
         {
             instance = this;
         }
-        Debug.Log(instance);
         LevelStartCinemathic();
     }
 
