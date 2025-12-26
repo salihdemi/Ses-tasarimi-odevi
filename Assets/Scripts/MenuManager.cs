@@ -12,6 +12,10 @@ public class MenuManager : MonoBehaviour
     {
         a.SetActive(true);
     }
+    public void Anamenu()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void Cik()
     {
         Application.Quit();

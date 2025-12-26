@@ -12,6 +12,7 @@ public class Instrumentalist : MonoBehaviour
     {
         Debug.Log("leave");
         LevelManager.instance.melodyManager.StopMelody();
+        GetComponent<SpriteRenderer>().color = Color.grey;
         col.isTrigger = true;
     }
 }

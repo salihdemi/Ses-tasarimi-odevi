@@ -14,6 +14,10 @@ public class ControllerDisabler : MonoBehaviour
         characterController.enabled = true;
         characterHit.enabled = true;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Disable();
+    }
     public void Disable()
     {
         characterController.enabled = false;

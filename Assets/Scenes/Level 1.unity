@@ -514,7 +514,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74, y: 0.79}
+  m_Size: {x: 0.74, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &268105211
 GameObject:
@@ -764,7 +764,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74, y: 0.79}
+  m_Size: {x: 0.74, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &488437228
 GameObject:
@@ -7897,7 +7897,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -587809024004842565, guid: f42c7d75858ea7541a87df316e108f64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8412,7 +8412,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74, y: 0.79}
+  m_Size: {x: 0.74, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1464382148
 GameObject:
@@ -8712,7 +8712,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74, y: 0.79}
+  m_Size: {x: 0.74, y: 1}
   m_EdgeRadius: 0
 --- !u!82 &1578449759
 AudioSource:
@@ -9056,7 +9056,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74, y: 0.79}
+  m_Size: {x: 0.74, y: 1}
   m_EdgeRadius: 0
 --- !u!82 &1749098584
 AudioSource:
@@ -9428,7 +9428,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7890358543207675513, guid: df1917a97f34f6f4f8b302005c5fda7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9561,7 +9561,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74, y: 0.79}
+  m_Size: {x: 0.74, y: 1}
   m_EdgeRadius: 0
 --- !u!82 &2029191365
 AudioSource:
